@@ -38,7 +38,6 @@ requirements = [
     'pyzmq>=13.1.0',
     'future',
     'gevent>=1.2',
-    'python>3.0',
 ]
 
 
@@ -49,6 +48,7 @@ setup(
     author=__author__,
     url='https://github.com/0rpc/zerorpc-python',
     packages=['zerorpc'],
+    python_requires='>3.5',
     install_requires=requirements,
     tests_require=['nose'],
     test_suite='nose.collector',
@@ -61,8 +61,7 @@ setup(
         'Natural Language :: English',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ),
 )
