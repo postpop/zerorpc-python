@@ -1,13 +1,27 @@
+zerorpc extended
+================
+
+An extension of zerorpc - by dropping compatibility for non-python targets, we get:
+
+- kwargs (based on the `fortunado's: https://github.com/fortunado/zerorpc-python/tree/python_stuff` fork)
+- pickle to serialize arbitrary object (based on `fortunado's: https://github.com/fortunado/zerorpc-python/tree/python_stuff` fork)
+- `msgpack-numpy: ` support (based on the `JNevrly's: https://github.com/JNevrly/zerorpc-python/tree/msgpack_numpy_integration` fork)
+
+Install this version with::
+
+    pip install git+https://github.com/postpop/zerorpc-python.git
+
+Original README.rst follows below.
+
 zerorpc
 =======
-
 .. image:: https://travis-ci.org/0rpc/zerorpc-python.svg?branch=master
     :target: https://travis-ci.org/0rpc/zerorpc-python
 
 Mailing list: zerorpc@googlegroups.com (https://groups.google.com/d/forum/zerorpc)
 
 
-zerorpc is a flexible RPC implementation based on zeromq and messagepack. 
+zerorpc is a flexible RPC implementation based on zeromq and messagepack.
 Service APIs exposed with zerorpc are called "zeroservices".
 
 zerorpc can be used programmatically or from the command-line. It comes
@@ -37,7 +51,7 @@ we will expose the Python "time" module::
    The bind address uses the zeromq address format. You are not limited
    to TCP transport: you could as well specify ipc:///tmp/time to use
    host-local sockets, for instance. "tcp://*:1234" is a short-hand to
-   "tcp://0.0.0.0:1234" and means "listen on TCP port 1234, accepting 
+   "tcp://0.0.0.0:1234" and means "listen on TCP port 1234, accepting
    connections on all IP addresses".
 
 
@@ -123,7 +137,7 @@ for a worker to connect to it. Let's start the worker::
 
   $ zerorpc --server tcp://127.0.0.1:1234 time
 
-The worker will connect to the listening client and ask him "what should I 
+The worker will connect to the listening client and ask him "what should I
 do?"; the client will send the "strftime" function call; the worker will
 execute it and return the result. The first program will display the
 local time and exit. The worker will remain running.
@@ -171,19 +185,19 @@ Here's how to expose an object of your choice as a zeroservice::
             """ End a sentence with ", man!" to make it sound cooler, and
             return the result. """
             return sentence + ", man!"
-    
+
         def add_42(self, n):
             """ Add 42 to an integer argument to make it cooler, and return the
             result. """
             return n + 42
-    
+
         def boat(self, sentence):
             """ Replace a sentence with "I'm on a boat!", and return that,
             because it's cooler. """
             return "I'm on a boat!"
-    
+
     import zerorpc
-    
+
     s = zerorpc.Server(Cooler())
     s.bind("tcp://0.0.0.0:4242")
     s.run()
@@ -204,4 +218,3 @@ Now, in another terminal, let's try connecting to our awesome zeroservice::
 
 Congratulations! You have just made the World a little cooler with your first
 zeroservice, man!
-
