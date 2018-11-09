@@ -3,9 +3,9 @@ zerorpc extended
 
 An extension of zerorpc - by dropping compatibility for non-python targets, we get:
 
-- kwargs (based on the `fortunado's<https://github.com/fortunado/zerorpc-python/tree/python_stuff>`_ fork)
-- pickle to serialize arbitrary object (based on `fortunado's<https://github.com/fortunado/zerorpc-python/tree/python_stuff>`_ fork)
-- `msgpack-numpy<https://github.com/lebedov/msgpack-numpy>`_ support (based on the `JNevrly's<https://github.com/JNevrly/zerorpc-python/tree/msgpack_numpy_integration>`_ fork)
+- kwargs (based on the `fortunado's <https://github.com/fortunado/zerorpc-python/tree/python_stuff>`_ fork)
+- pickle to serialize arbitrary object (based on `fortunado's <https://github.com/fortunado/zerorpc-python/tree/python_stuff>`_ fork)
+- `msgpack-numpy <https://github.com/lebedov/msgpack-numpy>`_ support (based on the `JNevrly's <https://github.com/JNevrly/zerorpc-python/tree/msgpack_numpy_integration>`_ fork)
 
 Install this version with::
 
