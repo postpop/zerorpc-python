@@ -26,11 +26,7 @@ import sys
 
 exec(compile(open('zerorpc/version.py', encoding='utf8').read(), 'zerorpc/version.py', 'exec'))
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
-
+from setuptools import setup, find_packages
 
 requirements = [
     'msgpack>=0.5.2',
@@ -47,7 +43,7 @@ setup(
     description='zerorpc is a flexible RPC based on zeromq.',
     author=__author__,
     url='https://github.com/0rpc/zerorpc-python',
-    packages=['zerorpc'],
+    packages=find_packages(),
     python_requires='>3.5',
     install_requires=requirements,
     tests_require=['nose'],
