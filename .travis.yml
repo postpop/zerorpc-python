@@ -1,10 +1,9 @@
 sudo: false
 language: python
 python:
-  - 2.6
-  - 2.7
-  - 3.4
   - 3.5
+  - 3.6
+  - 3.7
 env:
   matrix:
     - PYZMQ='pyzmq>=15'
@@ -18,13 +17,7 @@ addons:
       - python-dev
       - libevent-dev
 install:
-  - if [ $TRAVIS_PYTHON_VERSION != '2.6' ]; then
-    pip install flake8;
-    fi
   - "pip install nose $PYZMQ"
   - pip install .
 script:
-  - if [ $TRAVIS_PYTHON_VERSION != '2.6' ]; then
-    flake8 --ignore=E501,E128 zerorpc bin;
-    fi
   - nosetests -v

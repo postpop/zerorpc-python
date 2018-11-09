@@ -24,10 +24,7 @@
 
 import sys
 
-if sys.version_info < (3, 0):
-    execfile('zerorpc/version.py')
-else:
-    exec(compile(open('zerorpc/version.py', encoding='utf8').read(), 'zerorpc/version.py', 'exec'))
+exec(compile(open('zerorpc/version.py', encoding='utf8').read(), 'zerorpc/version.py', 'exec'))
 
 try:
     from setuptools import setup
@@ -40,17 +37,9 @@ requirements = [
     'msgpack-numpy>=0.4.3',
     'pyzmq>=13.1.0',
     'future',
+    'gevent>=1.2',
+    'python>3.0',
 ]
-
-if sys.version_info < (2, 7):
-    requirements.append('argparse')
-
-if sys.version_info < (2, 7):
-    requirements.append('gevent>=1.1.0,<1.2.0')
-elif sys.version_info < (3, 0):
-    requirements.append('gevent>=1.0')
-else:
-    requirements.append('gevent>=1.1rc5')
 
 
 setup(
