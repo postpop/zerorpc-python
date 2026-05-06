@@ -1,0 +1,49 @@
+[build-system]
+requires = ["flit_core >=3.11,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "zerorpc-numpy"
+version = "0.7.0"
+description = "zerorpc is a flexible RPC based on zeromq with msgpack-numpy support."
+readme = "README.md"
+requires-python = ">3.10"
+license = "MIT"
+authors = [
+    { name = "Francois-Xavier Bourlet", email = "bombela+zerorpc@gmail.com" },
+]
+maintainers = [
+    { name = "Jan Clemens" },
+]
+dependencies = [
+    "msgpack>=0.5.2",
+    "msgpack-numpy>=0.4.3",
+    "pyzmq>=13.1.0",
+    "future",
+    "gevent>=1.2",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Programming Language :: Python",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+]
+
+[project.urls]
+Homepage = "https://github.com/postpop/zerorpc-python"
+Upstream = "https://github.com/0rpc/zerorpc-python"
+
+[project.scripts]
+zerorpc = "zerorpc.cli:main"
+
+[tool.flit.module]
+name = "zerorpc"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
