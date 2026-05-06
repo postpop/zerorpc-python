@@ -28,7 +28,7 @@ from __future__ import absolute_import
 from builtins import str
 from future.utils import tobytes
 
-from nose.tools import assert_raises
+import pytest
 import gevent
 import gevent.local
 import random
@@ -38,6 +38,8 @@ import sys
 from zerorpc import zmq
 import zerorpc
 from .testutils import teardown, random_ipc_endpoint, TIME_FACTOR
+
+assert_raises = pytest.raises
 
 
 def test_resolve_endpoint():

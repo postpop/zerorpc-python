@@ -25,13 +25,15 @@
 
 from __future__ import print_function
 from __future__ import absolute_import
-from nose.tools import assert_raises
+import pytest
 import gevent
 import sys
 
 from zerorpc import zmq
 import zerorpc
 from .testutils import teardown, random_ipc_endpoint, TIME_FACTOR
+
+assert_raises = pytest.raises
 
 
 def test_client_server_client_timeout_with_async():
@@ -53,7 +55,7 @@ def test_client_server_client_timeout_with_async():
     client = zerorpc.Client(timeout=TIME_FACTOR * 2)
     client.connect(endpoint)
 
-    async_result = client.add(1, 4, async=True)
+    async_result = client.add(1, 4, **{'async': True})
 
     if sys.version_info < (2, 7):
         def _do_with_assert_raises():
@@ -84,8 +86,8 @@ def test_client_server_with_async():
     client = zerorpc.Client()
     client.connect(endpoint)
 
-    async_result = client.lolita(async=True)
+    async_result = client.lolita(**{'async': True})
     assert async_result.get() == 42
 
-    async_result = client.add(1, 4, async=True)
+    async_result = client.add(1, 4, **{'async': True})
     assert async_result.get() == 5

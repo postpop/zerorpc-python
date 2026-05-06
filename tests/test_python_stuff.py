@@ -174,7 +174,7 @@ def test_kwargs_msgpack():
     kwargs = {'a': 7, 'b': 8}
     res = client.echo(*args, **kwargs)
     assert len(res) == 2
-    assert res[0] == args
+    assert res[0] == list(args)
     assert len(res[1]) == len(kwargs)
     assert 'a' in res[1] and 'b' in res[1]
 
@@ -205,7 +205,7 @@ def test_kwargs_msgpack_numpy():
     kwargs = {'a': 7, 'b': 8}
     res = client.echo(*args, **kwargs)
     assert len(res) == 2
-    assert res[0] == args
+    assert res[0] == list(args)
     assert len(res[1]) == len(kwargs)
     assert 'a' in res[1] and 'b' in res[1]
 

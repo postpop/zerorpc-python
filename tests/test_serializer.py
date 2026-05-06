@@ -12,7 +12,7 @@ def test_msgpack():
     ser = M()
     blob = ser.pack(x)
     print(ser.unpack(blob))
-    assert x == ser.unpack(blob)
+    assert list(x) == ser.unpack(blob)
 
 
 def test_pickle():
@@ -27,8 +27,8 @@ def test_msgpack_numpy():
     x = (1, 2, 3)
     blob = ser.pack(x)
     xu = ser.unpack(blob)
-    assert type(xu) == type(x)
-    assert xu == x
+    assert type(xu) is list
+    assert xu == list(x)
 
     ser = N()
     x = np.array((1, 2, 3))

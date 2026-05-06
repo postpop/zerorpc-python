@@ -27,13 +27,15 @@ from __future__ import print_function
 from __future__ import absolute_import
 from builtins import range
 
-from nose.tools import assert_raises
+import pytest
 import gevent
 import sys
 
 from zerorpc import zmq
 import zerorpc
 from .testutils import teardown, random_ipc_endpoint, TIME_FACTOR
+
+assert_raises = pytest.raises
 
 
 def test_server_manual():
@@ -215,7 +217,7 @@ def test_exception_compat_v1():
     assert event.name == 'ERR'
     (msg,) = event.args
     print('msg only', msg)
-    assert msg == "NameError('donotexist',)"
+    assert msg in ("NameError('donotexist')", "NameError('donotexist',)")
 
     client_events.close()
     srv.close()

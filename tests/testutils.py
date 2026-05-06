@@ -26,9 +26,10 @@ from __future__ import print_function
 from builtins import str
 
 import functools
-import nose.exc
 import random
 import os
+
+import pytest
 
 _tmpfiles = []
 
@@ -51,8 +52,8 @@ def teardown():
 def skip(reason):
     def _skip(test):
         @functools.wraps(test)
-        def wrap():
-            raise nose.exc.SkipTest(reason)
+        def wrap(*args, **kwargs):
+            pytest.skip(reason)
         return wrap
     return _skip
 

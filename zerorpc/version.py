@@ -22,8 +22,27 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+try:
+    from importlib.metadata import PackageNotFoundError, version
+except ImportError:
+    from importlib_metadata import PackageNotFoundError, version
+
+
+__all__ = [
+    '__title__',
+    '__distribution__',
+    '__version__',
+    '__author__',
+    '__license__',
+    '__copyright__',
+]
+
 __title__ = 'zerorpc'
-__version__ = '0.6.2'
+__distribution__ = 'zerorpc-numpy'
+try:
+    __version__ = version(__distribution__)
+except PackageNotFoundError:
+    __version__ = '0+unknown'
 __author__ = 'François-Xavier Bourlet <bombela+zerorpc@gmail.com>.'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2015 François-Xavier Bourlet <bombela+zerorpc@gmail.com>.'
